@@ -1,0 +1,1 @@
+Aqui se crea todos los archivos necesarios para el frotend con react y vite (recomendacion)
