@@ -8,6 +8,9 @@ const authRoutes = require("./routes/auth.routes");
 const childRoutes = require("./routes/child.routes");
 const aiRoutes = require("./routes/ai.routes");
 const ttsRoutes = require("./routes/tts.routes");
+const activityRoutes = require("./routes/activity.routes");
+const sessionRoutes = require("./routes/session.routes");
+const progressRoutes = require("./routes/progress.routes");
 const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
@@ -22,6 +25,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/children", childRoutes);
 app.use("/api/ia", aiRoutes);
 app.use("/api/tts", ttsRoutes);
+app.use("/api/activities", activityRoutes);
+app.use("/api/sessions", sessionRoutes);
+app.use("/api/progress", progressRoutes);
 
 // Manejador de errores
 app.use(errorHandler);

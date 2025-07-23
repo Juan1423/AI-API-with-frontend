@@ -1,4 +1,4 @@
-const Child = require("../models/Child");
+const Child = require("../models/child");
 
 exports.createChild = async (req, res) => {
   const { name, age } = req.body;
