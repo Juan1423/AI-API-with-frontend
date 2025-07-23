@@ -1,19 +1,44 @@
-const textToSpeech = require("@google-cloud/text-to-speech");
-const fs = require("fs");
-const util = require("util");
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
 
-const client = new textToSpeech.TextToSpeechClient();
-
-exports.synthesizeSpeech = async (req, res) => {
+const generateSpeech = async (req, res) => {
   const { text } = req.body;
-  const request = {
-    input: { text },
-    voice: { languageCode: "en-US", ssmlGender: "NEUTRAL" },
-    audioConfig: { audioEncoding: "MP3" },
-  };
-  const [response] = await client.synthesizeSpeech(request);
-  const writeFile = util.promisify(fs.writeFile);
-  const filePath = "output.mp3";
-  await writeFile(filePath, response.audioContent, "binary");
-  res.sendFile(filePath, { root: "." });
+
+  if (!text) return res.status(400).json({ error: 'Texto requerido' });
+
+  try {
+    const response = await axios({
+      method: 'POST',
+      url: 'https://api.elevenlabs.io/v1/text-to-speech/EXAVITQu4vr4xnSDxMaL',
+      headers: {
+        'xi-api-key': process.env.ELEVENLABS_API_KEY,
+        'Content-Type': 'application/json',
+        'Accept': 'audio/mpeg'
+      },
+      data: {
+        text,
+        voice_settings: {
+          stability: 0.75,
+          similarity_boost: 0.75
+        }
+      },
+      responseType: 'stream'
+    });
+
+    // Guardar como archivo o enviar al frontend directamente
+    const filePath = path.join(__dirname, '../audio/output.mp3');
+    const writer = fs.createWriteStream(filePath);
+    response.data.pipe(writer);
+
+    writer.on('finish', () => {
+      res.download(filePath, 'output.mp3');
+    });
+
+  } catch (error) {
+    console.error(error?.response?.data || error.message);
+    res.status(500).json({ error: 'Error generando audio' });
+  }
 };
+
+module.exports = { generateSpeech };

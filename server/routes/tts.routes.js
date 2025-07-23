@@ -1,7 +1,7 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { synthesizeSpeech } = require("../controllers/tts.controller");
+const { generateSpeech } = require('../controllers/ttsController');
 
-router.post("/speak", synthesizeSpeech);
+router.post('/tts', generateSpeech);
 
 module.exports = router;
