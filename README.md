@@ -71,3 +71,44 @@ http://localhost:5173
 
 
 -------------------Servidor---------------------------
+
+
+# 🧠 AI-Powered Therapy API
+
+Este proyecto es una API creada con **Node.js + Express** para una aplicación de terapia del habla, utilizando inteligencia artificial para generar contenido textual (con OpenAI) y convertirlo en audio (con ElevenLabs). Incluye autenticación con JWT y almacenamiento en MongoDB.
+
+---
+
+## 📦 Requisitos
+
+- Node.js 18+
+- npm
+- MongoDB 
+- Cuenta en OpenAI y ElevenLabs para obtener las API Keys
+
+---
+
+## ⚙️ Instalación
+
+1. **Clona el repositorio:**
+
+```bash
+git clone https://github.com/Juan1423/AI-API-with-frontend.git
+cd TU_REPO
+
+npm install
+
+```
+2. **Crea el archivo de variables .env:**
+crea un archivo de configiracion parecido a .env.example
+con tus propias keys 
+(ingeniero en el adjunto de la actividad esta el archivo .env que usted necesita usar)
+
+3. **Inicia el servidor:**
+
+```bash
+node .\server.js
+o
+nodemon .\server.js
+```
+http://localhost:5000
