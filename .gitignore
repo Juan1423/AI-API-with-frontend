@@ -52,3 +52,4 @@ data/
 uploads/
 tmp/
 .mp3
+server/audio/output.mp3
