@@ -1,30 +1,42 @@
-import { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import Navbar from "../components/Navbar";
 
-function ActivityGenerator() {
-  const [word, setWord] = useState('');
-  const [response, setResponse] = useState('');
+const ActivityGenerator = () => {
+  const [word, setWord] = useState("");
+  const [activity, setActivity] = useState(null);
 
-  const handleGenerate = async () => {
-    const res = await axios.post('http://localhost:5000/api/ai/generate', { palabra: word });
-    setResponse(res.data.resultado);
+  const generateActivity = () => {
+    setActivity(`Dibuja un perro y escribe una historia corta usando la palabra: ${word}`);
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-bold">Generar actividad con IA</h2>
-      <input
-        className="border p-2"
-        type="text"
-        placeholder="Escribe una palabra (ej: perro)"
-        value={word}
-        onChange={(e) => setWord(e.target.value)}
-      />
-      <button onClick={handleGenerate} className="ml-2 bg-blue-500 text-white px-4 py-2 rounded">
-        Generar
-      </button>
-      {response && <div className="mt-4 p-4 bg-gray-100 rounded">{response}</div>}
+    <div className="min-h-screen bg-yellow-50">
+      <Navbar />
+      <div className="p-8">
+        <h1 className="text-3xl font-bold text-yellow-700 mb-4">Generador de Actividades</h1>
+        <input
+          type="text"
+          value={word}
+          onChange={(e) => setWord(e.target.value)}
+          placeholder="Ingresa una palabra (ej: perro)"
+          className="border p-3 rounded w-full max-w-md mb-4"
+        />
+        <button
+          onClick={generateActivity}
+          className="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600"
+        >
+          Generar Actividad
+        </button>
+        {activity && (
+          <div className="mt-6 p-4 bg-white rounded shadow max-w-xl">
+            <h2 className="font-semibold text-lg">Actividad:</h2>
+            <p>{activity}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
-}
+};
+
 export default ActivityGenerator;
+
