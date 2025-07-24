@@ -28,7 +28,7 @@ const Login = ({ onLogin }) => {
             placeholder="Usuario"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
+            className="w-full p-4 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
           />
         </div>
 
@@ -38,7 +38,7 @@ const Login = ({ onLogin }) => {
             placeholder="Contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
+            className="w-full p-4 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
           />
         </div>
 

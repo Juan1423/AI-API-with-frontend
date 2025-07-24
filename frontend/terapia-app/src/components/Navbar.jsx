@@ -7,7 +7,7 @@ const Navbar = () => (
     <div className="space-x-4">
       <Link to="/" className="hover:underline">Inicio</Link>
       <Link to="/generator" className="hover:underline">Actividades</Link>
-      <Link to="/profile" className="hover:underline">Perfil</Link>
+      <Link to="/profile" className="hover:underline text-white">Perfil</Link>
     </div>
   </nav>
 );
