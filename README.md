@@ -1,114 +1,139 @@
-# AI-API-with-frontend
+# Proyecto Full Stack - Node.js/Express + React/Vite
 
-Aqui van todo instruccion necesaria para correr el proyecto.
-1. App.jsx – Enrutador de toda la aplicación
- Qué hace:
-Administra las rutas (/, /login, /generator, /profile) y protege las rutas internas con login.
+Este proyecto consiste en una aplicación full stack con un servidor backend desarrollado en Node.js con Express y un cliente frontend desarrollado en React con Vite.
 
-Cómo se ejecuta:
+## 📋 Requisitos Previos
 
-Es importado por main.jsx como el componente raíz de la app.
+- Node.js (versión 20 o superior)
+- npm 
+- Git
 
-Se ejecuta automáticamente al iniciar la app (npm run dev).
+## 🗂️ Estructura del Proyecto
 
-2. Login.jsx – Pantalla de inicio de sesión
-Qué hace:
-Muestra un formulario para ingresar usuario y contraseña.
+```
+proyecto/
+├── server/          # Backend Node.js + Express
+│   ├── .env.example   # Archivo de ejemplo de variables de entorno
+│   ├── package.json
+│   └── ...
+└── cliente/           # Frontend React + Vite
+    ├── package.json
+    └── ...
 
-Cómo se accede:
+```
 
-Automáticamente si no estás autenticado
+## 🚀 Instalación y Configuración
 
-Manualmente: ir a http://localhost:5173/login
-
-Login de prueba:
-
-Usuario: admin
-
-Contraseña: 1234
-
-3. Home.jsx – Página principal protegida
-Qué hace:
-Contenido principal que se muestra solo tras iniciar sesión.
-
-Cómo se accede:
-
-Ir a: http://localhost:5173/
-
-Solo accesible si el login fue exitoso
-
- 4. ActivityGenerator.jsx – Generador de actividades
-  Qué hace:
-Simula una funcionalidad para generar actividades educativas.
-
-Cómo se accede:
-
-Ir a: http://localhost:5173/generator
-
-Protegido: requiere login previo
-
-5. ChildProfile.jsx – Perfil de niño
-Qué hace:
-Muestra el perfil de un niño (nombre, progreso, etc.)
-
- Cómo se accede:
-
-Ir a: http://localhost:5173/profile
-
-Protegido: requiere login
-
-CÓMO LEVANTAR TODO EL PROYECTO
-
-# 1. Instala dependencias
-npm install
-
-# 2. Ejecuta el servidor de desarrollo
-npm run dev
-
-http://localhost:5173
-
-
-
-
--------------------Servidor---------------------------
-
-
-# 🧠 AI-Powered Therapy API
-
-Este proyecto es una API creada con **Node.js + Express** para una aplicación de terapia del habla, utilizando inteligencia artificial para generar contenido textual (con OpenAI) y convertirlo en audio (con ElevenLabs). Incluye autenticación con JWT y almacenamiento en MongoDB.
-
----
-
-## 📦 Requisitos
-
-- Node.js 18+
-- npm
-- MongoDB 
-- Cuenta en OpenAI y ElevenLabs para obtener las API Keys
-
----
-
-## ⚙️ Instalación
-
-1. **Clona el repositorio:**
+### 1. Clonar el Repositorio
 
 ```bash
 git clone https://github.com/Juan1423/AI-API-with-frontend.git
-cd TU_REPO
-
-npm install
-
+cd AI-API-WITH-FRONTEND
 ```
-2. **Crea el archivo de variables .env:**
-crea un archivo de configiracion parecido a .env.example
-con tus propias keys 
-(ingeniero en el adjunto de la actividad esta el archivo .env que usted necesita usar)
 
-3. **Inicia el servidor:**
+### 2. Configuración del Servidor (Backend)
 
+#### Navegar al directorio del servidor:
+```bash
+cd server
+```
+
+#### Instalar dependencias:
+```bash
+npm install
+```
+
+#### Configurar variables de entorno:
+
+**Importante:** Usa el archivo `.env.example`, como guia para configurar tus API keys.
+
+1. Copia el archivo `.env.example` y cambia el nombre `.env` 
+```bash
+touch .env
+```
+2. Configura tus propiasAPi Keys:
+3. Copia el contenido de `config.txt` al archivo `.env`
+
+**Nota para el profesor:** La configuración correcta del archivo `.env` se encuentra en el archivo `config.txt` incluido carpeta compartida.
+
+### 3. Configuración del Cliente (Frontend)
+
+#### Navegar al directorio del cliente:
+```bash
+cd ../frontend
+cd terapia-app
+```
+
+#### Instalar dependencias:
+```bash
+npm install
+```
+
+## ▶️ Ejecución de la Aplicación
+
+### Ejecutar el Servidor (Backend)
+
+1. Navegar al directorio del servidor:
+```bash
+cd server
+```
+
+2. Iniciar el servidor:
 ```bash
 node .\server.js
-o
+```
+o si prefieres nodemon:
+```bash
 nodemon .\server.js
 ```
-http://localhost:5000
+
+El servidor se ejecutará en: `http://localhost:5000` (o el puerto configurado en el .env)
+
+### Ejecutar el Cliente (Frontend)
+
+1. En una nueva terminal, navegar al directorio del cliente:
+```bash
+cd frontend
+cd terapia-app
+```
+
+2. Iniciar el servidor de desarrollo de Vite:
+```bash
+npm run dev
+```
+
+El cliente se ejecutará en: `http://localhost:5173` (puerto por defecto de Vite)
+
+## 🔧 Scripts Disponibles
+
+### Servidor (Node.js + Express)
+- `node .\server.js` - Ejecuta el servidor en modo producción
+- `nodemon .\server.js` - Ejecuta el servidor con nodemon (si lo prefieres)
+
+### Cliente (React + Vite)
+- `npm run dev` - Inicia el servidor de desarrollo
+
+## 📝 Notas Importantes
+
+1. **Variables de Entorno**: Asegúrate de usar la configuración del archivo `config.txt` para el archivo `.env` del servidor, no el `.env.example`.
+
+2. **Orden de Ejecución**: Inicia primero el servidor backend y luego el cliente frontend.
+
+3. **Puertos**: Por defecto:
+   - Servidor: Puerto 5000 (o el configurado en .env)
+   - Cliente: Puerto 5173 (Vite)
+
+4. **Comunicación**: Verifica que la URL del backend esté correctamente configurada en el cliente para las peticiones API.
+
+## 🐛 Solución de Problemas
+
+### Error: "Cannot connect to server"
+- Verifica que el servidor backend esté ejecutándose
+- Confirma que las variables de entorno estén correctamente configuradas
+
+### Error: "Module not found"
+- Ejecuta `npm install` en ambos directorios (servidor y cliente)
+
+### Error de CORS
+- Verifica la configuración de CORS en el servidor
+- Confirma que la URL del frontend esté permitida en el backend
