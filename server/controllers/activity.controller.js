@@ -19,29 +19,29 @@ function construirPrompt({ tipo, tema, edad, nivel }) {
       complejidad = "Usa frases simples y vocabulario claro.";
   }
 
+  const formatoBase = "Responde SOLO con el contenido solicitado, sin introducciones, saludos o explicaciones adicionales. NO uses markdown, asteriscos, guiones o cualquier formato especial. Usa solo texto plano.";
+
   switch (tipo.toLowerCase()) {
     case "cuento":
-      return `Genera una historia corta con 5 oraciones. Está dirigida a un niño de ${edad} años con Síndrome de Down. El tema es: ${tema}. ${complejidad}`;
+      return `${formatoBase} Escribe una historia corta con exactamente 5 oraciones para un niño de ${edad} años con Síndrome de Down. Tema: ${tema}. ${complejidad}`;
 
     case "juego":
-      return `Crea un juego de palabras para un niño de ${edad} años con Síndrome de Down. El juego debe incluir 5 palabras relacionadas con el tema: ${tema}. ${complejidad}`;
+      return `${formatoBase} Presenta un juego de palabras con exactamente 5 palabras relacionadas con ${tema} para un niño de ${edad} años con Síndrome de Down. Lista solo las palabras numeradas del 1 al 5, sin instrucciones adicionales. ${complejidad}`;
 
     case "repetición":
-      return `Diseña una actividad de repetición de palabras para un niño de ${edad} años con Síndrome de Down. Usa palabras concretas y frases cortas. ${complejidad}`;
+      return `${formatoBase} Crea una lista de 5 palabras o frases cortas sobre ${tema} para repetir, dirigida a un niño de ${edad} años con Síndrome de Down. Presenta solo la lista numerada. ${complejidad}`;
 
     case "diálogo":
-      return `Escribe un mini-diálogo entre un niño y un personaje (puede ser un ${tema}), usando frases simples y repetitivas. 
-      Dirigido a un niño de ${edad} años con Síndrome de Down. ${complejidad}`;
+      return `${formatoBase} Escribe un diálogo corto entre un niño y un personaje relacionado con ${tema}. Máximo 6 intercambios (3 de cada uno). Para un niño de ${edad} años con Síndrome de Down. Formato: Niño: [texto] / Personaje: [texto]. ${complejidad}`;
 
     case "rutina":
-      return `Crea una historia con 4 frases sobre la rutina diaria de un niño, pensada para un niño con Síndrome de Down de ${edad} años. 
-      El tema puede incluir: ${tema}. ${complejidad}`;
+      return `${formatoBase} Describe una rutina diaria en exactamente 4 frases simples relacionadas con ${tema}, para un niño de ${edad} años con Síndrome de Down. ${complejidad}`;
 
     case "emociones":
-      return `Genera una actividad para enseñar 3 emociones básicas (feliz, triste, enojado) a un niño con Síndrome de Down de ${edad} años. ${complejidad}`;
+      return `${formatoBase} Lista 3 emociones básicas (feliz, triste, enojado) con una frase simple para cada una, dirigido a un niño de ${edad} años con Síndrome de Down. Formato: [Emoción]: [frase]. ${complejidad}`;
 
     default:
-      return `Genera una actividad de lenguaje simple para un niño de ${edad} años con Síndrome de Down. El tema es: ${tema}, el tipo es: ${tipo}, y el nivel es: ${nivel}. ${complejidad}`;
+      return `${formatoBase} Crea una actividad de lenguaje sobre ${tema} para un niño de ${edad} años con Síndrome de Down. Tipo: ${tipo}. ${complejidad}`;
   }
 }
 
